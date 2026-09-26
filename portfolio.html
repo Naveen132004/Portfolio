@@ -610,7 +610,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
     </div>
     <h1 class="hero-name" id="hero-name" data-text="Naveen Kumar">Naveen Kumar</h1>
     <div class="hero-role" id="hero-role"><span class="type-cursor"></span></div>
-    <p class="hero-desc">Computer Science and Business Systems undergraduate at SRM Institute of Science and Technology — crafting intelligent solutions with AI, full-stack development, and modern web technologies.</p>
+    <p class="hero-desc">Computer Science and Business Systems undergraduate graduating in 2027 with hands-on experience developing Python-based applications, REST APIs, data processing solutions, and AI-enabled systems using the MERN stack.</p>
     <div class="hero-cta-row">
       <a href="#projects" class="btn-primary magnetic-btn">View My Work</a>
       <a href="#contact" class="btn-outline magnetic-btn">Let's Talk</a>
@@ -650,15 +650,15 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
     <div class="about-text">
       <div class="section-eyebrow reveal" data-delay="0">About Me</div>
       <h2 class="section-title reveal" data-delay="100">Crafting the Future <span class="gradient-text">with Code & AI</span></h2>
-      <p class="reveal" data-delay="200">Computer Science and Business Systems undergraduate at SRM Institute of Science and Technology with hands-on experience in AI, full-stack development, and database systems. Skilled in Python, JavaScript, React, and SQL, with practical knowledge of machine learning, REST API development, and modern web technologies.</p>
-      <p class="reveal" data-delay="350">Passionate about building innovative technology solutions that solve real-world problems and create meaningful user experiences.</p>
+      <p class="reveal" data-delay="200">Computer Science and Business Systems undergraduate at SRM Institute of Science and Technology, graduating in 2027 with hands-on experience developing Python-based applications, REST APIs, data processing solutions, and AI-enabled systems. Experienced in React.js, Node.js, Express.js, MongoDB, and the MERN stack, with strong foundations in OOP, DSA, SQL, Git, and software development.</p>
+      <p class="reveal" data-delay="350">Passionate about building intelligent solutions that solve real-world problems — from enterprise BI platforms with AI-powered analytics to smart city management systems and career recommendation engines.</p>
       <div class="tech-tags reveal" data-delay="500">
-        <span class="tech-tag">Python</span><span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">Java</span><span class="tech-tag">Python</span>
+        <span class="tech-tag">JavaScript</span><span class="tech-tag">TypeScript</span>
         <span class="tech-tag">React</span><span class="tech-tag">Node.js</span>
-        <span class="tech-tag">SQL</span><span class="tech-tag">MongoDB</span>
-        <span class="tech-tag">Machine Learning</span><span class="tech-tag">REST APIs</span>
-        <span class="tech-tag">Power BI</span><span class="tech-tag">Java</span>
-        <span class="tech-tag">C++</span><span class="tech-tag">TensorFlow</span>
+        <span class="tech-tag">FastAPI</span><span class="tech-tag">Spring Boot</span>
+        <span class="tech-tag">PostgreSQL</span><span class="tech-tag">MongoDB</span>
+        <span class="tech-tag">Docker</span><span class="tech-tag">AWS</span>
       </div>
       <div class="about-info-grid reveal" data-delay="600">
         <div class="about-info-card"><div class="about-info-value" data-target="2">0</div><div class="about-info-label">Years Exp</div></div>
@@ -847,7 +847,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
   'use strict';
 
   // ─────────────── DATA ───────────────
-  const marqueeItems = ['React','Node.js','Python','TypeScript','MongoDB','Next.js','Tailwind CSS','TensorFlow','PostgreSQL','Docker','AWS','Figma'];
+  const marqueeItems = ['React','Node.js','Python','TypeScript','MongoDB','FastAPI','Tailwind CSS','Spring Boot','PostgreSQL','Docker','AWS','Java'];
   
   const services = [
     {number:'01',title:'AI Development',description:'Building intelligent systems powered by machine learning, natural language processing, and computer vision to solve real-world challenges.'},
@@ -860,63 +860,72 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
 
   const skillCategories = [
     {title:'Programming',gradient:'coral',skills:[
-      {name:'Java',icon:'☕',level:85},{name:'Python',icon:'🐍',level:80},
-      {name:'C++',icon:'⚙️',level:75},{name:'JavaScript',icon:'⚡',level:85},
-      {name:'SQL',icon:'🗄️',level:78}
+      {name:'Java',icon:'☕',level:85},{name:'Python',icon:'🐍',level:82},
+      {name:'JavaScript',icon:'⚡',level:85},{name:'TypeScript',icon:'📘',level:78},
+      {name:'C++',icon:'⚙️',level:75}
     ]},
     {title:'Frontend',gradient:'teal',skills:[
       {name:'HTML',icon:'🌐',level:90},{name:'CSS',icon:'🎨',level:88},
-      {name:'React',icon:'⚛️',level:82},{name:'Tailwind CSS',icon:'💨',level:85}
+      {name:'React',icon:'⚛️',level:85},{name:'Tailwind CSS',icon:'💨',level:82}
     ]},
-    {title:'Backend',gradient:'lime',skills:[
-      {name:'Node.js',icon:'🟢',level:80},{name:'Express.js',icon:'🚂',level:78}
+    {title:'Backend & APIs',gradient:'lime',skills:[
+      {name:'Node.js',icon:'🟢',level:82},{name:'Express.js',icon:'🚂',level:80},
+      {name:'FastAPI',icon:'⚡',level:78},{name:'Spring Boot',icon:'🍃',level:75},
+      {name:'REST APIs',icon:'🔗',level:85}
     ]},
     {title:'Database',gradient:'yellow',skills:[
-      {name:'MongoDB',icon:'🍃',level:80},{name:'MySQL',icon:'🐬',level:75}
+      {name:'PostgreSQL',icon:'🐘',level:82},{name:'MySQL',icon:'🐬',level:78},
+      {name:'MongoDB',icon:'🍃',level:80},{name:'SQL',icon:'🗄️',level:85}
     ]},
-    {title:'AI & Analytics',gradient:'orchid',skills:[
-      {name:'Machine Learning',icon:'🤖',level:72},{name:'Pandas',icon:'🐼',level:75},
-      {name:'NumPy',icon:'🔢',level:74},{name:'Power BI',icon:'📊',level:70},
-      {name:'Excel',icon:'📈',level:82}
+    {title:'AI & ML',gradient:'orchid',skills:[
+      {name:'LLMs',icon:'🤖',level:75},{name:'RAG',icon:'🔍',level:72},
+      {name:'Prophet',icon:'📈',level:70},{name:'pgvector',icon:'🧮',level:68}
     ]},
-    {title:'Tools',gradient:'sky',skills:[
-      {name:'Git',icon:'🔀',level:85},{name:'GitHub',icon:'🐙',level:88},
-      {name:'VS Code',icon:'💻',level:90},{name:'Postman',icon:'📮',level:78}
+    {title:'Tools & Cloud',gradient:'sky',skills:[
+      {name:'Git',icon:'🔀',level:88},{name:'GitHub',icon:'🐙',level:88},
+      {name:'Docker',icon:'🐳',level:75},{name:'AWS',icon:'☁️',level:72},
+      {name:'CI/CD',icon:'🔄',level:76},{name:'Postman',icon:'📮',level:80}
     ]},
   ];
 
   const projects = [
-    {id:1,number:'01',category:'AI + Smart City',title:'Smart Municipal Management System',
-     description:'An AI-powered municipal management platform designed to improve urban services through complaint tracking, waste management, analytics dashboards, and smart monitoring features.',
-     techStack:['React.js','Node.js','MongoDB','Express.js','AI'],
-     githubUrl:'https://github.com/Naveen132004/Smart-Municipal-Management-System',featured:true},
-    {id:2,number:'02',category:'Career & Learning Platform',title:'PathByte',
-     description:'A modern platform focused on learning resources, career guidance, and developer growth. Designed with a clean UI and user-focused experience.',
-     techStack:['React.js','JavaScript','Tailwind CSS','Node.js'],
+    {id:1,number:'01',category:'AI + Business Intelligence',title:'AIBI-DSS – AI Business Intelligence & Decision Support System',
+     description:'Enterprise BI platform covering 6 business functions: sales, inventory, orders, customers, suppliers, expenses with an 11-table PostgreSQL schema. Built AI two-service system with Fast API, Prophet, pgvector, and Gemini for natural language querying of business data.',
+     techStack:['Java','Spring Boot','Python','FastAPI','React','TypeScript','PostgreSQL','pgvector','Prophet','Docker'],
+     githubUrl:'https://github.com/Naveen132004',featured:true},
+    {id:2,number:'02',category:'AI + Smart City',title:'Smart Municipal Management System',
+     description:'Civic issue platform with 3 user types: Citizen, Worker, and Admin for submitting, assigning, tracking complaints. Protected by JWT, bcrypt.js, RBAC with 4 priority levels and 4 status levels. Leaflet JS and Chart JS for data visualization.',
+     techStack:['React.js','Tailwind CSS','Node.js','Express.js','PostgreSQL','JWT','Leaflet.js','Chart.js','Vite'],
+     githubUrl:'https://github.com/Naveen132004/Smart-Municipal-Management-System'},
+    {id:3,number:'03',category:'AI + Career Platform',title:'PathByte – AI-Powered Learning Roadmap Platform',
+     description:'Customized career-planning system based on 4 inputs including location, career interests, and market trends. Analyzed labor market trends in 5+ major cities and derived individualized skill gap recommendations for different career levels.',
+     techStack:['JavaScript (ES6+)','React','Express.js','PostgreSQL'],
      githubUrl:'https://github.com/Naveen132004/PathByte'},
-    {id:3,number:'03',category:'Machine Learning + CV',title:'Garbage Detection System',
-     description:'An AI-powered garbage detection system that uses computer vision and machine learning techniques to identify and classify waste for smarter waste management.',
-     techStack:['Python','OpenCV','TensorFlow','Machine Learning'],
+    {id:4,number:'04',category:'Machine Learning + CV',title:'Garbage Detection System',
+     description:'Modular Python data pipeline integrating detection, geo-tagged reporting, and MongoDB persistence, achieving 99.5% data accuracy. Reduced false positives by 15% through iterative debugging and pipeline optimization.',
+     techStack:['Python','Flask','YOLOv8','OpenCV','MongoDB','Geopy','OpenWeather API'],
      githubUrl:'https://github.com/Naveen132004/Garbage-Detection-System-'},
-    {id:4,number:'04',category:'Full Stack + Database',title:'Student Management System',
+    {id:5,number:'05',category:'Full Stack + Database',title:'Student Management System',
      description:'A complete student management platform for handling attendance, authentication, department management, and student records with an efficient database structure.',
      techStack:['Java','MySQL','JDBC'],
      githubUrl:'https://github.com/Naveen132004/Student-Management-System-'},
-    {id:5,number:'05',category:'Finance + Analytics',title:'Paisa — Smart Finance Tracker',
+    {id:6,number:'06',category:'Finance + Analytics',title:'Paisa — Smart Finance Tracker',
      description:'A smart finance tracking application that helps users manage expenses, monitor savings, and analyze financial habits through intuitive dashboards.',
      techStack:['React.js','Node.js','MongoDB','Chart.js'],
      githubUrl:'https://github.com/Naveen132004/merapaisa-nk'},
-    {id:6,number:'06',category:'AI + Cybersecurity',title:'FakeShield',
+    {id:7,number:'07',category:'AI + Cybersecurity',title:'FakeShield',
      description:'An intelligent fake news and misinformation detection platform designed to identify suspicious content using machine learning and NLP techniques.',
      techStack:['Python','NLP','Machine Learning','Flask'],
      githubUrl:'https://github.com/Naveen132004/FakeShield'},
-    {id:7,number:'07',category:'E-Commerce + Full Stack',title:'FreshCart — Grocery Delivery App',
+    {id:8,number:'08',category:'E-Commerce + Full Stack',title:'FreshCart — Grocery Delivery App',
      description:'A modern grocery delivery web application featuring premium UI/UX, responsive design, shopping cart functionality, and smooth user interactions.',
      techStack:['React.js','Tailwind CSS','Node.js','MongoDB'],
      githubUrl:'https://github.com/Naveen132004/Freshcart'},
   ];
 
   const workExperience = [
+    {title:'Frontend Development Intern',company:'CodeAlpha',duration:'Oct 2025 — Nov 2025',
+     description:'Delivered 3 responsive web interfaces using React.js, HTML, CSS, and JavaScript. Collaborated across 12+ Git/GitHub feature branches, coordinating CI/CD workflows. Crafted 8 reusable React components and technical documentation.',type:'Internship · Remote'},
     {title:'AI Developer',company:'Self-Employed / Freelance',duration:'2023 — Present',
      description:'Building intelligent systems with ML, NLP, and computer vision for real-world applications.',type:'Work'},
     {title:'Full Stack Developer',company:'Freelance Projects',duration:'2023 — Present',
@@ -924,12 +933,14 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
   ];
 
   const education = [
-    {degree:'B.Tech — Computer Science & Business Systems',institution:'SRM Institute of Science and Technology',duration:'2023 — 2027'},
+    {degree:'B.Tech — Computer Science & Business Systems (CGPA: 7.78)',institution:'SRM Institute of Science and Technology, Chennai',duration:'2023 — 2027'},
     {degree:'12th - Higher Secondary School',institution:'Vidya Niketan',duration:'2019 — 2021'},
     {degree:'10th - Secondary School',institution:'Oxbridge International School',duration:'2018 — 2019'},
   ];
 
   const certifications = [
+    {name:'Oracle AI Cloud Database Services 2025 Certified Professional',issuer:'Oracle',date:'2025'},
+    {name:'Oracle Cloud Infrastructure 2025 Certified Generative AI Professional',issuer:'Oracle',date:'2025'},
     {name:'Machine Learning Specialization',issuer:'Online Learning Platform',date:'2024'},
     {name:'Full Stack Web Development',issuer:'Online Learning Platform',date:'2023'},
     {name:'Data Analytics with Power BI',issuer:'Online Learning Platform',date:'2023'},
@@ -937,22 +948,23 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
   ];
 
   const achievements = [
-    {title:'AI Projects Delivered',description:'Successfully built and deployed AI-powered applications including voice assistants and computer vision systems.',icon:'🤖',category:'AI',metric:'4+'},
-    {title:'Full Stack Applications',description:'Developed production-grade web applications using the MERN stack with authentication and real-time features.',icon:'🚀',category:'Development',metric:'5+'},
-    {title:'Technical Certifications',description:'Earned certifications in Machine Learning, Data Analytics, Web Development, and Cloud Technologies.',icon:'📜',category:'Certification',metric:'6+'},
-    {title:'Problem Solving',description:'Solved hundreds of algorithmic challenges across competitive programming platforms, sharpening logic and efficiency.',icon:'🧩',category:'Problem Solving',metric:'300+'},
+    {title:'DSA Problem Solving',description:'Solved 260+ DSA questions on LeetCode and GeeksforGeeks, sharpening algorithmic thinking and problem-solving efficiency.',icon:'🧩',category:'Problem Solving',metric:'260+'},
+    {title:'TECHgium 9th Edition',description:'Shortlisted for TECHgium 9th Edition by Larsen & Toubro, a prestigious national-level technology competition.',icon:'🏆',category:'Competition',metric:'Top'},
+    {title:'Oracle Certified Professional',description:'Earned Oracle AI Cloud Database Services 2025 and Oracle Cloud Infrastructure 2025 Generative AI Professional certifications.',icon:'📜',category:'Certification',metric:'2x'},
+    {title:'AI Projects Delivered',description:'Successfully built and deployed AI-powered applications including enterprise BI systems, career recommendation engines, and computer vision pipelines.',icon:'🤖',category:'AI',metric:'4+'},
+    {title:'Full Stack Applications',description:'Developed production-grade web applications using the MERN stack with authentication, RBAC, and real-time data visualization.',icon:'🚀',category:'Development',metric:'5+'},
     {title:'Community Impact',description:'Mentored peers in programming fundamentals, conducted workshops, and contributed to open-source projects.',icon:'🌍',category:'Leadership',metric:'50+'},
-    {title:'Hackathon Participation',description:'Participated in hackathons building innovative solutions under time constraints with cross-functional teams.',icon:'🏆',category:'Hackathon',metric:'3+'},
   ];
 
   const timelineData = [
-    {year:'2026',title:'Smart Municipal Management System',subtitle:'AI-Powered Project',description:'Developed an AI-powered platform for smart city waste management and complaint resolution with analytics dashboards.',category:'project',icon:'🏙️'},
-    {year:'2025',title:'Oracle Cloud Infrastructure 2025 Certified Generative AI Professional',subtitle:'Professional Development',description:'Learned to build and deploy LLM-based applications using OCI Generative AI, including RAG and semantic search techniques.',category:'cert',icon:'🎓'},
-    {year:'2025',title:'Machine Learning Certification',subtitle:'Professional Development',description:'Completed advanced machine learning coursework covering supervised, unsupervised, and deep learning methodologies.',category:'cert',icon:'📜'},
-    {year:'2025',title:'Community Teaching Initiative',subtitle:'Leadership & Community',description:'Led peer programming workshops and mentored junior students in web development and Python fundamentals.',category:'community',icon:'🎓'},
-    {year:'2024',title:'Full Stack Web Development',subtitle:'Skill Acquisition',description:'Mastered the MERN stack (MongoDB, Express.js, React, Node.js) for building production-grade web applications.',category:'edu',icon:'💻'},
-    {year:'2024',title:'Data Analytics with Power BI',subtitle:'Analytics Training',description:'Gained expertise in data visualization, business intelligence reporting, and analytical dashboard creation.',category:'cert',icon:'📊'},
-    {year:'2023',title:'Competitive Programming',subtitle:'Problem Solving',description:'Actively participating in competitive programming challenges, sharpening algorithmic thinking and problem-solving skills.',category:'achievement',icon:'🏆'},
+    {year:'2026',title:'AIBI-DSS – AI Business Intelligence & Decision Support System',subtitle:'Enterprise AI Project',description:'Built an enterprise BI platform with 11-table PostgreSQL schema, 4 analytical modules, and AI-powered natural language querying using Fast API, Prophet, pgvector, and Gemini.',category:'project',icon:'📊'},
+    {year:'2026',title:'Smart Municipal Management System',subtitle:'Full Stack Project',description:'Developed a civic issue platform with 3 user types, JWT/RBAC authentication, and interactive data visualization using Leaflet JS and Chart JS.',category:'project',icon:'🏙️'},
+    {year:'2026',title:'PathByte – AI-Powered Learning Roadmap Platform',subtitle:'AI Career Platform',description:'Created a customized career-planning system analyzing labor market trends in 5+ major cities with individualized skill gap recommendations.',category:'project',icon:'💡'},
+    {year:'2025',title:'Frontend Development Intern at CodeAlpha',subtitle:'Professional Experience',description:'Delivered 3 responsive web interfaces, collaborated across 12+ Git/GitHub branches, and crafted 8 reusable React components.',category:'achievement',icon:'💼'},
+    {year:'2025',title:'Garbage Detection System',subtitle:'ML & Computer Vision',description:'Built a modular Python data pipeline with geo-tagged reporting and MongoDB persistence, achieving 99.5% data accuracy.',category:'project',icon:'🤖'},
+    {year:'2025',title:'Oracle Cloud Certifications',subtitle:'Professional Development',description:'Earned Oracle AI Cloud Database Services 2025 and Oracle Cloud Infrastructure 2025 Generative AI Professional certifications.',category:'cert',icon:'🎓'},
+    {year:'2025',title:'Shortlisted for TECHgium 9th Edition',subtitle:'Competition',description:'Shortlisted for TECHgium 9th Edition by Larsen & Toubro, a prestigious national-level technology competition.',category:'achievement',icon:'🏆'},
+    {year:'2023',title:'260+ DSA Problems Solved',subtitle:'Problem Solving',description:'Actively solving DSA questions on LeetCode and GeeksforGeeks, sharpening algorithmic thinking and competitive programming skills.',category:'achievement',icon:'🧩'},
   ];
 
   const gradientColors = {coral:'var(--coral)',teal:'var(--teal)',lime:'var(--lime)',yellow:'var(--yellow)',orchid:'var(--orchid)',sky:'var(--sky)'};
@@ -1190,10 +1202,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
 
   // ─────────────── TYPEWRITER ───────────────
   const roles=[
-    {text:'AI Developer & Full Stack Engineer',colors:['#FF6B6B','#4ECDC4','#FF8E53','#96E6A1','#45B7D1']},
-    {text:'Python & ML Specialist',colors:['#FFD93D','#FF6B6B','#DDA0DD']},
-    {text:'React & Node.js Developer',colors:['#4ECDC4','#FF8E53','#45B7D1']},
-    {text:'Database & API Engineer',colors:['#96E6A1','#FFD93D','#FF6B9D']},
+    {text:'Software Engineer',colors:['#FF6B6B','#4ECDC4']},
+    {text:'AI Developer',colors:['#FFD93D','#FF6B6B']},
+    {text:'Full Stack Engineer',colors:['#4ECDC4','#FF8E53','#45B7D1']},
   ];
   const roleEl=document.getElementById('hero-role');
   let roleIdx=0,charIdx=0,isDel=false;
