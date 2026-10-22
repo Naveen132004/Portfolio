@@ -71,7 +71,7 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: INTRO_DELAY + 0.5 }}
         >
-          AI developer & full stack engineer
+          AI developer & software engineer
         </motion.p>
 
         <motion.p

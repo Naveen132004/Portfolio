@@ -5,10 +5,10 @@ import { FaGithub } from 'react-icons/fa';
 
 export default function GitHubStats() {
   const stats = [
-    { label: 'Repositories', value: '20+', icon: '📦' },
-    { label: 'Contributions', value: '500+', icon: '🔥' },
+    { label: 'Repositories', value: '15+', icon: '📦' },
+    { label: 'Contributions', value: '100+', icon: '🔥' },
     { label: 'Languages', value: '6+', icon: '💻' },
-    { label: 'Stars', value: '10+', icon: '⭐' },
+    { label: 'Stars', value: '5+', icon: '⭐' },
   ];
 
   return (

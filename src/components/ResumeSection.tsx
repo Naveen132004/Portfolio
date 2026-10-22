@@ -6,7 +6,7 @@ import { FileDown, Eye } from 'lucide-react';
 const stats = [
   { label: 'Languages', value: '5+' },
   { label: 'Frameworks', value: '6+' },
-  { label: 'Projects', value: '10+' },
+  { label: 'Projects', value: '15+' },
   { label: 'Certifications', value: '6+' },
 ];
 
@@ -55,7 +55,7 @@ export default function ResumeSection() {
           <div className="md:col-span-8 lg:col-span-9">
             <FadeInWrapper>
               <h3 className="display text-[clamp(2.5rem,5vw,4rem)] text-foam">Naveen Kumar</h3>
-              <p className="mt-2 serif text-[1.35rem] text-tide">AI Developer & Full Stack Engineer</p>
+              <p className="mt-2 serif text-[1.35rem] text-tide">AI Developer & Software Engineer</p>
               <p className="mt-5 text-[17px] leading-[1.75] text-muted max-w-[56ch]">
                 A comprehensive overview of my professional experience, education, skills, and technical capabilities in building modern digital products.
               </p>

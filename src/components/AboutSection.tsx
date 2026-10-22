@@ -6,7 +6,7 @@ const aboutText =
 
 const infoCards = [
   { value: '2+', label: 'Years Experience' },
-  { value: '10+', label: 'Projects Built' },
+  { value: '15+', label: 'Projects Built' },
   { value: '6+', label: 'Tech Stacks' },
   { value: '3+', label: 'Focus Areas' },
 ];
