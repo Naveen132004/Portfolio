@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SectionHeader from './ui/SectionHeader';
 import FadeInWrapper from './ui/FadeInWrapper';
 import { FileDown, Eye } from 'lucide-react';
 
@@ -9,92 +10,85 @@ const stats = [
   { label: 'Certifications', value: '6+' },
 ];
 
+const RESUME_URL = '/Naveen_Kumar_Resume.pdf';
+
 export default function ResumeSection() {
   return (
-    <section className="section-spacing">
-      <div className="container-narrow">
-        {/* Section Header */}
-        <div className="text-center mb-16 md:mb-24">
-          <FadeInWrapper blur>
-            <p className="label-mono text-accent mb-4">
-              Curriculum Vitae
-            </p>
+    <section className="tone-dark section-spacing relative overflow-hidden">
+      {/* Soft lagoon light rising behind the portrait */}
+      <div
+        className="pointer-events-none absolute -left-[15vw] top-1/2 -translate-y-1/2 w-[55vw] h-[55vw] max-w-[640px] max-h-[640px] rounded-full bg-lagoon/30 blur-[120px]"
+        aria-hidden="true"
+      />
+
+      <div className="container-narrow relative">
+        <SectionHeader label="Curriculum Vitae" title={['My resume']} />
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-10 items-end">
+          <FadeInWrapper className="md:col-span-4 lg:col-span-3">
+            {/* The frame is observed; a curtain inside it lifts, so the observed box is never clipped */}
+            <motion.div
+              className="relative w-full max-w-[320px] aspect-[3/4] rounded-t-full rounded-b-[28px] overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6),inset_0_0_0_1px_rgba(234,244,243,0.15)]"
+              initial="hidden"
+              whileInView="shown"
+              viewport={{ once: true, margin: '-80px' }}
+            >
+              <motion.img
+                src="/Naveenpic.jpeg"
+                alt="Naveen Kumar"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                variants={{ hidden: { scale: 1.12 }, shown: { scale: 1 } }}
+                transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-tide/60 via-tide/10 to-transparent mix-blend-multiply" aria-hidden="true" />
+              <div className="absolute inset-0 rounded-[inherit] shadow-[inset_0_2px_0_rgba(255,255,255,0.35)]" aria-hidden="true" />
+              <motion.div
+                className="absolute inset-0 bg-abyss origin-top"
+                variants={{ hidden: { scaleY: 1 }, shown: { scaleY: 0 } }}
+                transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+                aria-hidden="true"
+              />
+            </motion.div>
           </FadeInWrapper>
 
-          <FadeInWrapper delay={0.1} blur>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] text-text-primary leading-[1.1]">
-              My Resume
-            </h2>
-          </FadeInWrapper>
-        </div>
+          <div className="md:col-span-8 lg:col-span-9">
+            <FadeInWrapper>
+              <h3 className="display text-[clamp(2.5rem,5vw,4rem)] text-foam">Naveen Kumar</h3>
+              <p className="mt-2 serif text-[1.35rem] text-tide">AI Developer & Full Stack Engineer</p>
+              <p className="mt-5 text-[17px] leading-[1.75] text-muted max-w-[56ch]">
+                A comprehensive overview of my professional experience, education, skills, and technical capabilities in building modern digital products.
+              </p>
+            </FadeInWrapper>
 
-        {/* Resume Card */}
-        <FadeInWrapper delay={0.2}>
-          <div className="card-bento p-8 md:p-14 lg:p-16">
-            <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
-              {/* Left — Image */}
-              <div className="flex-shrink-0 w-full lg:w-[280px]">
+            <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-line mt-10 mb-10 max-w-[720px]">
+              {stats.map((item, i) => (
                 <motion.div
-                  className="relative w-full lg:w-[280px] h-[360px] rounded-2xl overflow-hidden border border-border"
-                  whileHover={{ y: -4 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                  key={item.label}
+                  className="pt-5 pl-5 pr-3 border-l border-line"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.08, duration: 0.7 }}
                 >
-                  <img
-                    src="/Naveenpic.jpeg"
-                    alt="Naveen Kumar"
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Subtle coral overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  <p className="display text-[2.5rem] text-foam">{item.value}</p>
+                  <p className="mt-1 text-sm text-muted">{item.label}</p>
                 </motion.div>
-              </div>
-
-              {/* Right — Info */}
-              <div className="flex-1 text-center lg:text-left flex flex-col items-center lg:items-start">
-                <h3 className="text-3xl md:text-4xl font-bold text-text-primary mb-3 tracking-[-0.02em]">
-                  Naveen Kumar
-                </h3>
-                <p className="font-medium text-accent mb-6 text-lg">
-                  AI Developer & Full Stack Engineer
-                </p>
-                <p className="text-base text-text-secondary leading-[1.8] mb-10 max-w-lg">
-                  A comprehensive overview of my professional experience, education, skills, and technical capabilities in building modern digital products.
-                </p>
-
-                {/* Stats */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10 w-full max-w-lg">
-                  {stats.map((item, i) => (
-                    <motion.div
-                      key={item.label}
-                      className="card-surface py-5 text-center rounded-xl"
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.4 + i * 0.08, duration: 0.5 }}
-                    >
-                      <p className="text-2xl font-bold text-white mb-1">{item.value}</p>
-                      <p className="text-[10px] text-white/50 uppercase tracking-widest font-mono font-medium">
-                        {item.label}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                  <button className="btn-primary">
-                    <FileDown className="w-5 h-5" />
-                    Download PDF
-                  </button>
-                  <button className="btn-secondary">
-                    <Eye className="w-5 h-5" />
-                    View Online
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
+
+            <FadeInWrapper delay={0.2} className="flex flex-col sm:flex-row gap-3">
+              <a href={RESUME_URL} download="Naveen_Kumar_Resume.pdf" className="btn-primary">
+                <FileDown className="w-5 h-5" />
+                Download PDF
+              </a>
+              <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                <Eye className="w-5 h-5" />
+                View Online
+              </a>
+            </FadeInWrapper>
           </div>
-        </FadeInWrapper>
+        </div>
       </div>
     </section>
   );

@@ -1,79 +1,45 @@
 import { motion } from 'framer-motion';
 import { linkedInProfile, linkedInExperience } from '../data/linkedinData';
+import SectionHeader from './ui/SectionHeader';
 import FadeInWrapper from './ui/FadeInWrapper';
 import { FaLinkedinIn } from 'react-icons/fa';
-import { Briefcase } from 'lucide-react';
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="section-spacing relative overflow-hidden">
-      <div className="container-narrow relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 md:mb-24">
-          <FadeInWrapper blur>
-            <p className="label-mono text-accent mb-4">
-              Career Path
-            </p>
-          </FadeInWrapper>
+    <section id="experience" className="tone-paper section-spacing">
+      <div className="container-narrow">
+        <SectionHeader
+          label="career path"
+          title={['Work', 'experience']}
+          intro={linkedInProfile.summary}
+        />
 
-          <FadeInWrapper delay={0.1} blur>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] text-text-primary leading-[1.1] mb-6">
-              Work Experience
-            </h2>
-          </FadeInWrapper>
-
-          <FadeInWrapper delay={0.2}>
-            <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
-              {linkedInProfile.summary}
-            </p>
-          </FadeInWrapper>
-        </div>
-
-        {/* Experience Cards */}
-        <div className="space-y-6">
+        <div className="border-b border-line">
           {linkedInExperience.map((exp, i) => (
-            <FadeInWrapper key={i} delay={i * 0.1}>
-              <motion.div
-                className="card-bento p-8 md:p-12 group"
-                whileHover={{ y: -2 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              >
-                <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
-                  {/* Left — Icon + Duration */}
-                  <div className="flex flex-row md:flex-col items-center gap-4 flex-shrink-0 md:w-[120px]">
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-                      <Briefcase className="w-5 h-5 text-accent" />
-                    </div>
-                    <span className="chip-accent">
-                      {exp.duration}
-                    </span>
-                    {exp.type && (
-                      <span className="text-[10px] uppercase tracking-widest text-text-tertiary font-mono font-medium hidden md:block">
-                        {exp.type}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Right — Content */}
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-2 tracking-[-0.01em] group-hover:text-accent transition-colors">
-                      {exp.title}
-                    </h3>
-                    <p className="text-sm font-medium text-text-tertiary mb-4 font-mono">
-                      {exp.company}
-                    </p>
-                    <p className="text-base text-text-secondary leading-[1.8]">
-                      {exp.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </FadeInWrapper>
+            <motion.article
+              key={i}
+              className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 py-10 md:py-12 border-t border-line"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.8, delay: i * 0.06 }}
+            >
+              <div className="md:col-span-3 flex md:flex-col gap-3 md:gap-2 items-baseline md:items-start">
+                <span className="text-[15px] text-ink tabular-nums">{exp.duration}</span>
+                <span className="text-sm text-faint capitalize">{exp.type}</span>
+              </div>
+              <div className="md:col-span-9">
+                <h3 className="serif text-[clamp(1.6rem,2.6vw,2.15rem)] leading-tight text-ink transition-transform duration-700 ease-out-expo group-hover:translate-x-2">
+                  {exp.title}
+                </h3>
+                <p className="mt-1 text-[15px] text-lagoon font-medium">{exp.company}</p>
+                <p className="mt-4 text-base leading-[1.75] text-muted max-w-[64ch]">{exp.description}</p>
+              </div>
+            </motion.article>
           ))}
         </div>
 
-        {/* LinkedIn CTA */}
-        <FadeInWrapper delay={0.3} className="mt-12 flex justify-center">
+        <FadeInWrapper delay={0.2} className="mt-12 md:pl-[calc(25%+10px)]">
           <a
             href={linkedInProfile.profileUrl}
             target="_blank"

@@ -1,77 +1,56 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll } from 'framer-motion';
 import { timelineData } from '../data/timeline';
-import FadeInWrapper from './ui/FadeInWrapper';
+import SectionHeader from './ui/SectionHeader';
 
 export default function Timeline() {
+  const listRef = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: listRef,
+    offset: ['start 70%', 'end 60%'],
+  });
+
   return (
-    <section className="section-spacing relative overflow-hidden">
-      <div className="max-w-[900px] mx-auto px-6 md:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16 md:mb-24">
-          <FadeInWrapper blur>
-            <p className="label-mono text-accent mb-4">
-              Journey
-            </p>
-          </FadeInWrapper>
+    <section className="tone-paper section-spacing">
+      <div className="container-narrow">
+        <SectionHeader label="Journey" title={['Timeline']} />
 
-          <FadeInWrapper delay={0.1} blur>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] text-text-primary leading-[1.1]">
-              Timeline
-            </h2>
-          </FadeInWrapper>
-        </div>
-
-        {/* Timeline — centered on all screen sizes */}
-        <div className="relative">
-          {/* Central Line — coral-tinted */}
-          <div className="absolute left-1/2 -translate-x-[0.5px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-accent/30 via-border to-accent/30" />
+        <ol ref={listRef} className="relative md:ml-[25%]">
+          {/* Track, drawn in as you scroll through it */}
+          <span className="absolute left-[7px] top-2 bottom-2 w-px bg-line" aria-hidden="true" />
+          <motion.span
+            className="absolute left-[7px] top-2 bottom-2 w-px bg-lagoon origin-top"
+            style={{ scaleY: scrollYProgress }}
+            aria-hidden="true"
+          />
 
           {timelineData.map((item, i) => (
-            <motion.div
+            <motion.li
               key={i}
-              className={`relative flex mb-16 md:mb-20 last:mb-0 ${
-                i % 2 === 0 ? 'justify-start' : 'justify-end'
-              }`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ delay: i * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="relative pl-12 md:pl-16 pb-14 last:pb-0"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8 }}
             >
-              {/* Timeline Node — coral */}
-              <div
-                className="absolute left-1/2 -translate-x-[8px] w-4 h-4 rounded-full bg-accent top-8 z-10"
-                style={{ boxShadow: '0 0 0 4px #FFFFFF, 0 0 0 5px #D8DADF' }}
-              />
-
-              {/* Content Card — alternating sides */}
-              <div
-                className={`w-[calc(50%-32px)] ${
-                  i % 2 === 0 ? 'pr-0' : 'pl-0'
-                }`}
+              <span
+                className="absolute left-0 top-2 w-[15px] h-[15px] rounded-full bg-paper border border-lagoon flex items-center justify-center"
+                aria-hidden="true"
               >
-                <div className="card-bento p-7 md:p-8 group hover:border-accent/30 transition-colors">
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <span className="text-xl">{item.icon}</span>
-                    <span className="text-base font-semibold text-accent font-mono">
-                      {item.year}
-                    </span>
-                    <span className="chip-accent text-[11px] py-1 px-3">
-                      {item.category}
-                    </span>
-                  </div>
+                <span className="w-[7px] h-[7px] rounded-full bg-lagoon" />
+              </span>
 
-                  <h3 className="text-lg md:text-xl font-semibold text-text-primary mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm font-medium text-text-tertiary mb-3 font-mono">{item.subtitle}</p>
-                  <p className="text-sm text-text-secondary leading-[1.7]">
-                    {item.description}
-                  </p>
-                </div>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-3">
+                <span className="display text-[2rem] text-ink tabular-nums">{item.year}</span>
+                <span className="text-xl" aria-hidden="true">{item.icon}</span>
+                <span className="tag capitalize">{item.category}</span>
               </div>
-            </motion.div>
+              <h3 className="serif text-[clamp(1.4rem,2.2vw,1.8rem)] leading-tight text-ink">{item.title}</h3>
+              <p className="mt-1 text-[15px] font-medium text-lagoon">{item.subtitle}</p>
+              <p className="mt-3 text-base leading-[1.7] text-muted max-w-[62ch]">{item.description}</p>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

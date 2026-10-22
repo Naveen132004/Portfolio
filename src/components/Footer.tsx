@@ -1,6 +1,5 @@
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { Mail, Heart } from 'lucide-react';
-import FadeInWrapper from './ui/FadeInWrapper';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -19,73 +18,61 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const handleClick = (href: string) => {
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <footer className="border-t border-border">
-      <div className="container-narrow py-14">
-        <FadeInWrapper>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
-            {/* Logo & Tagline */}
-            <div className="text-center md:text-left">
-              <a
-                href="#"
-                className="text-xl font-bold tracking-tight inline-block mb-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-              >
-                <span className="text-accent">NK</span><span className="text-text-tertiary">.</span>
-              </a>
-              <p className="text-sm text-text-tertiary max-w-xs">
-                Building intelligent systems & modern digital experiences.
-              </p>
-            </div>
-
-            {/* Nav Links */}
-            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3">
-              {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => handleClick(link.href)}
-                  className="text-sm font-medium text-text-secondary hover:text-accent transition-colors duration-300"
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Social Icons */}
-            <div className="flex items-center gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:bg-accent hover:text-white hover:border-accent transition-all duration-300"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
+    <footer className="tone-dark">
+      <div className="container-narrow pt-14 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-line">
+          <div className="md:col-span-5">
+            <a
+              href="#"
+              className="display text-[2.5rem] text-foam inline-block"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
+              NK<span className="text-coral-glow">.</span>
+            </a>
+            <p className="mt-3 text-[15px] text-muted max-w-xs">
+              Building intelligent systems & modern digital experiences.
+            </p>
           </div>
-        </FadeInWrapper>
 
-        {/* Divider */}
-        <div className="w-full h-[1px] bg-border mb-8" />
+          <nav className="md:col-span-4 flex flex-wrap gap-x-7 gap-y-3 md:pt-4" aria-label="Footer">
+            {navLinks.map((link) => (
+              <button
+                key={link.label}
+                onClick={() => handleClick(link.href)}
+                className="text-[15px] text-foam/80 hover:text-foam link-underline cursor-pointer"
+              >
+                {link.label}
+              </button>
+            ))}
+          </nav>
 
-        {/* Bottom Text */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-text-tertiary">
-          <p>
-            © {currentYear} Naveen Kumar. All rights reserved.
-          </p>
+          <div className="md:col-span-3 flex md:justify-end gap-3 md:pt-2">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 rounded-full border border-line flex items-center justify-center text-foam/80 hover:bg-foam hover:text-abyss transition-colors duration-300"
+                aria-label={social.label}
+              >
+                <social.icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pt-8 text-sm text-faint">
+          <p>© {currentYear} Naveen Kumar. All rights reserved.</p>
           <p className="flex items-center gap-1.5">
-            Designed with <Heart className="w-3 h-3 fill-accent text-accent" /> by Naveen
+            Designed with <Heart className="w-3.5 h-3.5 fill-coral-glow text-coral-glow" /> by Naveen
           </p>
         </div>
       </div>

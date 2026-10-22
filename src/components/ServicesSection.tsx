@@ -1,61 +1,41 @@
 import { motion } from 'framer-motion';
 import { services } from '../data/services';
-import FadeInWrapper from './ui/FadeInWrapper';
-import { ArrowRight } from 'lucide-react';
+import SectionHeader from './ui/SectionHeader';
 
 export default function ServicesSection() {
   return (
-    <section className="section-spacing">
+    <section id="services" className="tone-paper section-spacing">
       <div className="container-narrow">
-        {/* Section Header */}
-        <div className="text-center mb-16 md:mb-24">
-          <FadeInWrapper blur>
-            <p className="label-mono text-accent mb-4">
-              What I Do
-            </p>
-          </FadeInWrapper>
+        <SectionHeader label="what i do" title={['Services']} />
 
-          <FadeInWrapper delay={0.1} blur>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] text-text-primary leading-[1.1]">
-              Services
-            </h2>
-          </FadeInWrapper>
-        </div>
-
-        {/* Service Rows */}
-        <div className="border-t border-border">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.number}
-              className="group py-10 md:py-14 border-b border-border cursor-default relative"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-16">
-                {/* Number */}
-                <span className="text-5xl md:text-6xl font-bold text-border leading-none w-24 shrink-0 tracking-[-0.02em] font-mono">
-                  {service.number}
-                </span>
-
-                {/* Content */}
-                <div className="flex-1">
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-text-primary mb-3 group-hover:translate-x-3 group-hover:text-accent transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] tracking-[-0.02em]">
+        <div className="grid grid-cols-1 md:grid-cols-12 md:gap-10">
+          <div className="hidden md:block md:col-span-3" />
+          <div className="md:col-span-9 grid grid-cols-1 lg:grid-cols-2 gap-x-12">
+            {services.map((service, i) => (
+              <motion.article
+                key={service.number}
+                className="group relative py-9 border-t border-line"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ delay: (i % 2) * 0.1, duration: 0.8 }}
+              >
+                <div className="flex items-baseline gap-4 mb-3">
+                  <span className="text-sm text-faint tabular-nums">{service.number}</span>
+                  <h3 className="serif text-[clamp(1.6rem,2.4vw,2rem)] leading-tight text-ink transition-transform duration-700 ease-out-expo group-hover:translate-x-2">
                     {service.title}
                   </h3>
-                  <p className="text-base md:text-lg text-text-secondary leading-[1.7] max-w-2xl">
-                    {service.description}
-                  </p>
+                  <span
+                    className="ml-auto w-3 h-3 rounded-full bg-gradient-to-br from-white to-lagoon scale-0 group-hover:scale-100 transition-transform duration-500 ease-out-expo"
+                    aria-hidden="true"
+                  />
                 </div>
-
-                {/* Arrow */}
-                <div className="hidden md:flex shrink-0 items-center justify-center w-14 h-14 rounded-full border border-border group-hover:border-accent group-hover:bg-accent transition-all duration-400">
-                  <ArrowRight className="w-5 h-5 text-text-tertiary -rotate-45 group-hover:rotate-0 group-hover:text-white transition-all duration-400" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                <p className="text-base leading-[1.7] text-muted max-w-[52ch] md:pl-9">
+                  {service.description}
+                </p>
+              </motion.article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

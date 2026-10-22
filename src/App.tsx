@@ -1,10 +1,9 @@
 import { lazy, Suspense } from 'react';
+import { MotionConfig } from 'framer-motion';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ScrollProgress from './components/ui/ScrollProgress';
 import LoadingScreen from './components/ui/LoadingScreen';
-import CustomCursor from './components/ui/CustomCursor';
-import DynamicBackground from './components/ui/DynamicBackground';
 
 // Lazy load below-the-fold sections for performance
 const MarqueeSection = lazy(() => import('./components/MarqueeSection'));
@@ -23,20 +22,18 @@ const Footer = lazy(() => import('./components/Footer'));
 
 function SectionLoader() {
   return (
-    <div className="flex items-center justify-center py-32">
-      <div className="w-5 h-5 border-2 border-border border-t-accent rounded-full animate-spin" />
+    <div className="tone-mist flex items-center justify-center py-32">
+      <div className="w-4 h-4 border border-ink/20 border-t-ink/60 rounded-full animate-spin" />
     </div>
   );
 }
 
 export default function App() {
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       {/* Global UI */}
       <LoadingScreen />
-      <CustomCursor />
       <ScrollProgress />
-      <DynamicBackground />
       <Navbar />
 
       {/* Page content */}
@@ -46,8 +43,8 @@ export default function App() {
         <Suspense fallback={<SectionLoader />}>
           <MarqueeSection />
           <AboutSection />
-          <SkillsSection />
           <ServicesSection />
+          <SkillsSection />
           <ProjectsSection />
           <GitHubStats />
           <ExperienceSection />
@@ -59,6 +56,6 @@ export default function App() {
           <Footer />
         </Suspense>
       </main>
-    </>
+    </MotionConfig>
   );
 }

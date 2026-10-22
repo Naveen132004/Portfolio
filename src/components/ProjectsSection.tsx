@@ -1,108 +1,83 @@
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
-import FadeInWrapper from './ui/FadeInWrapper';
+import SectionHeader from './ui/SectionHeader';
 import { FaGithub } from 'react-icons/fa';
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function ProjectsSection() {
   return (
-    <section
-      id="projects"
-      className="section-spacing relative overflow-hidden"
-    >
+    <section id="projects" className="tone-dark section-spacing relative overflow-hidden">
       <div className="container-narrow relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 md:mb-24">
-          <FadeInWrapper blur>
-            <p className="label-mono text-accent mb-4">
-              Featured Work
-            </p>
-          </FadeInWrapper>
+        <SectionHeader
+          label="featured work"
+          title={['Selected', 'projects']}
+          intro="A showcase of recent work — AI integration, modern web development, and scalable architectures."
+        />
 
-          <FadeInWrapper delay={0.1} blur>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] text-text-primary leading-[1.1] mb-6">
-              Selected Projects
-            </h2>
-          </FadeInWrapper>
+        <div className="border-b border-line">
+          {projects.map((project) => (
+            <motion.article
+              key={project.id}
+              className="group relative grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-10 py-10 md:py-12 border-t border-line"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.9 }}
+            >
+              {/* Glow in the project's own colour, revealed on hover */}
+              <span
+                className="pointer-events-none absolute -left-24 top-1/2 -translate-y-1/2 w-72 h-72 rounded-full opacity-0 scale-75 blur-3xl transition-all duration-700 ease-out-expo group-hover:opacity-35 group-hover:scale-100"
+                style={{ background: project.color }}
+                aria-hidden="true"
+              />
 
-          <FadeInWrapper delay={0.2}>
-            <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
-              A showcase of my recent work focusing on AI integration, modern web development,
-              and scalable architectures.
-            </p>
-          </FadeInWrapper>
-        </div>
+              <div className="relative md:col-span-3 flex md:flex-col gap-4 md:gap-5 items-baseline md:items-start">
+                <span className="display text-[clamp(2.5rem,4vw,3.5rem)] text-foam/40 transition-colors duration-500 group-hover:text-foam tabular-nums">
+                  {project.number}
+                </span>
+                <span
+                  className="inline-flex items-center gap-2 text-sm text-muted"
+                >
+                  <span className="w-2 h-2 rounded-full" style={{ background: project.color }} aria-hidden="true" />
+                  {project.category}
+                </span>
+              </div>
 
-        {/* Project Cards — Bento */}
-        <div className="space-y-6">
-          {projects.map((project, i) => (
-            <FadeInWrapper key={project.id} delay={i * 0.08} scale>
-              <motion.div
-                className="card-bento p-8 md:p-12 lg:p-14 group"
-                whileHover={{ y: -4 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              >
-                {/* Header Row */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-border">
-                  <div className="flex items-center gap-6">
-                    <span className="text-5xl md:text-6xl font-bold text-accent/20 leading-none tracking-[-0.02em] font-mono">
-                      {project.number}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-text-primary tracking-[-0.02em] group-hover:text-accent transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                  </div>
-
-                  <span className="chip-accent self-start md:self-auto">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Description */}
-                <p className="text-base md:text-lg text-text-secondary leading-[1.8] mb-10 max-w-3xl">
+              <div className="relative md:col-span-7 min-w-0">
+                <h3 className="serif text-[clamp(1.6rem,3vw,2.5rem)] leading-[1.12] text-foam mb-4 transition-transform duration-700 ease-out-expo group-hover:translate-x-2">
+                  {project.title}
+                </h3>
+                <p className="text-base leading-[1.7] text-muted max-w-[62ch] mb-6">
                   {project.description}
                 </p>
+                <ul className="flex flex-wrap gap-2" aria-label="Tech stack">
+                  {project.techStack.map((tech) => (
+                    <li key={tech} className="tag">{tech}</li>
+                  ))}
+                </ul>
+              </div>
 
-                {/* Bottom Row */}
-                <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-3">
-                    {project.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="chip text-xs"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex items-center gap-4 shrink-0">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-text-secondary hover:bg-accent hover:text-white hover:border-accent transition-all duration-300"
-                      aria-label="View Source on GitHub"
-                    >
-                      <FaGithub size={20} />
-                    </a>
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-secondary text-sm px-6 py-3"
-                      >
-                        Live Demo
-                        <ExternalLink size={16} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            </FadeInWrapper>
+              <div className="relative md:col-span-2 flex md:flex-col md:items-end gap-3">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-foam hover:bg-foam hover:text-abyss transition-colors duration-300"
+                  aria-label={`${project.title} source on GitHub`}
+                >
+                  <FaGithub size={18} />
+                </a>
+                <a
+                  href={project.liveUrl ?? project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-foam hover:bg-foam hover:text-abyss transition-colors duration-300"
+                  aria-label={`View ${project.title}`}
+                >
+                  <ArrowUpRight size={18} />
+                </a>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>

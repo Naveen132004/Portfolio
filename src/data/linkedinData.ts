@@ -21,11 +21,19 @@ export interface LinkedInCertification {
 
 export const linkedInProfile = {
   summary:
-    'AI Developer and Full Stack Engineer building intelligent applications and modern web experiences.',
+    'Software Engineer, AI Developer and Full Stack Engineer building intelligent applications and modern web experiences.',
   profileUrl: 'https://www.linkedin.com/in/naveen-kumar-67981b312/',
 };
 
 export const linkedInExperience: LinkedInExperience[] = [
+  {
+    title: 'Frontend Development Intern',
+    company: 'CodeAlpha',
+    duration: 'Oct 2025 — Nov 2025',
+    description:
+      'Delivered 3 responsive web interfaces using React.js, HTML, CSS, and JavaScript. Collaborated across 12+ Git/GitHub feature branches, coordinating CI/CD workflows. Crafted 8 reusable React components and technical documentation.',
+    type: 'internship',
+  },
   {
     title: 'AI Developer',
     company: 'Self-Employed / Freelance',
@@ -46,8 +54,8 @@ export const linkedInExperience: LinkedInExperience[] = [
 
 export const linkedInEducation: LinkedInEducation[] = [
   {
-    degree: 'B.Tech — Computer Science & Business Systems',
-    institution: 'SRM Institute of Science and Technology',
+    degree: 'B.Tech — Computer Science & Business Systems (CGPA: 7.78)',
+    institution: 'SRM Institute of Science and Technology, Chennai',
     duration: '2023 — 2027',
     
   },
@@ -68,6 +76,16 @@ export const linkedInEducation: LinkedInEducation[] = [
 ];
 
 export const linkedInCertifications: LinkedInCertification[] = [
+  {
+    name: 'Oracle AI Cloud Database Services 2025 Certified Professional',
+    issuer: 'Oracle',
+    date: '2025',
+  },
+  {
+    name: 'Oracle Cloud Infrastructure 2025 Certified Generative AI Professional',
+    issuer: 'Oracle',
+    date: '2025',
+  },
   {
     name: 'Machine Learning Specialization',
     issuer: 'Online Learning Platform',

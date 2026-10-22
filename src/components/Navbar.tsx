@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
+import { INTRO_DELAY, EASE_OUT_EXPO } from './ui/intro';
 
 const navLinks = [
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'Services', href: '#services' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
 
+const pageLinks = navLinks.filter((link) => link.href !== '#contact');
+
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-
-      const sections = navLinks.map(link => link.href.substring(1));
+      const sections = navLinks.map((link) => link.href.substring(1));
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       for (const section of sections.reverse()) {
@@ -32,14 +32,18 @@ export default function Navbar() {
       setActiveSection('');
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+  }, [isMobileMenuOpen]);
+
   const handleClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToTop = () => {
@@ -47,129 +51,99 @@ export default function Navbar() {
     setActiveSection('');
   };
 
+  const enter = (i: number) => ({
+    initial: { y: -24, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    transition: { duration: 0.8, delay: INTRO_DELAY + 0.35 + i * 0.06, ease: EASE_OUT_EXPO },
+  });
+
   return (
     <>
-      {/* Sticky Top Navbar — Desktop */}
-      <motion.header
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-          scrolled ? 'nav-glass' : 'bg-transparent border-b border-transparent'
-        }`}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="max-w-[1200px] mx-auto px-6 md:px-8 flex items-center justify-between h-16 md:h-[72px]">
-          {/* Logo */}
-          <button
+      <header className="fixed top-0 left-0 right-0 z-[100] pointer-events-none">
+        <div className="container-narrow flex items-center justify-between h-20 md:h-24">
+          {/* Wordmark */}
+          <motion.button
+            {...enter(0)}
             onClick={scrollToTop}
-            className="text-xl font-bold tracking-tight"
+            className="pill pointer-events-auto pl-3 gap-2.5"
+            aria-label="Back to top"
           >
-            <span className="text-accent">NK</span><span className="text-text-tertiary">.</span>
-          </button>
+            <span className="relative w-6 h-6 shrink-0" aria-hidden="true">
+              <span className="absolute left-0 top-1 w-4 h-4 rounded-full border border-foam/80" />
+              <span className="absolute right-0 top-1 w-4 h-4 rounded-full bg-foam" />
+            </span>
+            <span className="font-medium tracking-[-0.01em]">naveen kumar</span>
+          </motion.button>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <button
-                  key={link.label}
-                  onClick={() => handleClick(link.href)}
-                  className={`text-sm font-medium transition-colors duration-300 relative py-1 ${
-                    isActive ? 'text-accent' : 'text-text-secondary hover:text-accent'
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="navIndicator"
-                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-accent rounded-full"
-                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                </button>
-              );
-            })}
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-1.5 pointer-events-auto" aria-label="Sections">
+            {pageLinks.map((link, i) => (
+              <motion.button
+                key={link.label}
+                {...enter(i + 1)}
+                onClick={() => handleClick(link.href)}
+                className="pill"
+                aria-current={activeSection === link.href.substring(1)}
+              >
+                {link.label}
+              </motion.button>
+            ))}
+            <motion.button
+              {...enter(pageLinks.length + 1)}
+              onClick={() => handleClick('#contact')}
+              className="pill ml-2 !bg-coral hover:!bg-[#c9362d] !border-transparent text-white"
+            >
+              Contact
+            </motion.button>
           </nav>
 
-          {/* CTA + Mobile Toggle */}
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => handleClick('#contact')}
-              className="hidden md:flex btn-primary text-sm px-6 py-2.5"
-            >
-              Let's Talk
-            </button>
-
-            {/* Mobile Hamburger */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden w-10 h-10 flex items-center justify-center text-accent"
-            >
-              <AnimatePresence mode="wait">
-                {isMobileMenuOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="w-6 h-6" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className="w-6 h-6" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </button>
-          </div>
+          {/* Mobile toggle */}
+          <motion.button
+            {...enter(1)}
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="pill md:hidden pointer-events-auto"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            Menu
+          </motion.button>
         </div>
-      </motion.header>
+      </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-[90] bg-white md:hidden flex flex-col items-center justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            id="mobile-menu"
+            className="fixed inset-0 z-[120] md:hidden bg-abyss text-foam flex flex-col"
+            initial={{ clipPath: 'circle(0% at 100% 0%)' }}
+            animate={{ clipPath: 'circle(150% at 100% 0%)' }}
+            exit={{ clipPath: 'circle(0% at 100% 0%)' }}
+            transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           >
-            <nav className="flex flex-col items-center gap-8">
+            <div className="container-narrow flex items-center justify-end h-20 w-full">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="pill"
+                aria-label="Close menu"
+              >
+                <X className="w-4 h-4" />
+                Close
+              </button>
+            </div>
+            <nav className="container-narrow w-full flex-1 flex flex-col justify-center gap-2 pb-20" aria-label="Sections">
               {navLinks.map((link, i) => (
                 <motion.button
                   key={link.label}
                   onClick={() => handleClick(link.href)}
-                  className="text-3xl font-semibold text-text-secondary hover:text-accent transition-colors"
-                  initial={{ opacity: 0, y: 20 }}
+                  className="display text-[clamp(2.75rem,13vw,4rem)] text-left text-foam/90 hover:text-foam py-1"
+                  initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: 0.15 + i * 0.06, duration: 0.6, ease: EASE_OUT_EXPO }}
                 >
                   {link.label}
                 </motion.button>
               ))}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-8"
-              >
-                <button
-                  onClick={() => handleClick('#contact')}
-                  className="btn-primary text-lg px-10 py-4"
-                >
-                  Let's Talk
-                </button>
-              </motion.div>
             </nav>
           </motion.div>
         )}
