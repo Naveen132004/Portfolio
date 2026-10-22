@@ -7,35 +7,38 @@ export interface Service {
 export const services: Service[] = [
   {
     number: '01',
-    title: 'AI Development',
+    title: 'AI Development & Integration',
     description:
-      'Building intelligent systems powered by machine learning, natural language processing, and computer vision to solve real-world challenges.',
+      'Building intelligent applications using AI models, APIs, prompt engineering, and AI-powered workflows.',
   },
   {
     number: '02',
-    title: 'Full Stack Development',
+    title: 'UI/UX & Product Design',
     description:
-      'Crafting end-to-end web applications with modern frameworks, responsive interfaces, and scalable backend architectures.',
+      'Designing intuitive interfaces, user journeys, responsive layouts, and engaging digital experiences.',
   },
   {
     number: '03',
-    title: 'UI/UX Design',
+    title: 'Full-Stack Development',
     description:
-      'Designing intuitive, beautiful user experiences with a focus on accessibility, interaction design, and visual storytelling.',
+      'Developing end-to-end web applications with React, Node.js, Express, REST APIs, and database integration.',
   },
   {
     number: '04',
-    title: 'Smart System Development',
+    title: 'AI-Assisted Prototyping',
     description:
-      'Engineering IoT-connected smart systems with automation, real-time monitoring, and intelligent decision-making capabilities.',
+      'Transforming ideas into interactive prototypes through rapid experimentation, AI-assisted coding, and iterative refinement.',
   },
   {
     number: '05',
-    title: 'Machine Learning Solutions',
+    title: 'Data Visualization & Dashboards',
     description:
-      'Developing intelligent ML models for prediction, automation, classification, and real-world AI-powered applications.',
+      'Building interactive dashboards that turn complex data into clear visual insights and actionable information.',
   },
-  { number: '06', title: 'Dashboard Development', description: 'Creating interactive dashboards with real-time data visualization, KPI tracking, and responsive UI experiences.', },
-
-
+  {
+    number: '06',
+    title: 'Intelligent System Development',
+    description:
+      'Integrating APIs, databases, automation, and AI capabilities to build practical, data-driven software solutions.',
+  },
 ];
